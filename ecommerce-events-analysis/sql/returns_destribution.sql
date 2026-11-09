@@ -8,11 +8,12 @@ WITH user_returns AS (
 )
 SELECT
     CASE
+        WHEN returns_count = 0 THEN 'return 0'
         WHEN returns_count = 1 THEN 'return 1'
         WHEN returns_count = 2 THEN 'return 2'
         WHEN returns_count = 3 THEN 'return 3'
         WHEN returns_count = 4 THEN 'return 4'
-        ELSE 'return 4+'
+        ELSE 'return 5+'  -- раньше сюда попадали и пользователи с 0 возвратов
     END AS return_group,
     ROUND(
         COUNT(*)::numeric /
